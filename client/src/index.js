@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
-axios.defaults.baseURL = 'http://localhost:4000'
+axios.defaults.baseURL = 'http://localhost:4000/api/'
 axios.defaults.headers.get['Accept'] = 'application/json'  
 axios.defaults.headers.post['Accept'] = 'application/json'  
 
