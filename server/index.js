@@ -62,7 +62,7 @@ app.get('/api/question', (req, res) => {
       let userrole = role       
       console.log(userrole)
       if(userrole == 'admin'){
-        let query = "SELECT id, hospital_id, code, patients_dob, status, name_of_institution, city, country FROM questions where status = ? and demographics_completed = ? and initialpresentation_completed = ? and pathology_completed = ? and treatment_completed = ? and followup_completed = ? and healtheconomics_completed = ? order by id desc limit ?, ?"
+        let query = "SELECT id, hospital_id, patient_name, code, patients_dob, status, name_of_institution, city, country FROM questions where status = ? and demographics_completed = ? and initialpresentation_completed = ? and pathology_completed = ? and treatment_completed = ? and followup_completed = ? and healtheconomics_completed = ? order by id desc limit ?, ?"
         db.query(query,  ["1", "true", "true", "true", "true", "true", "true", parseInt(limit * range), parseInt(limit)], function (err, result, fields) {
           if (err) {
               console.log(err);
@@ -76,7 +76,7 @@ app.get('/api/question', (req, res) => {
               }            
         });
       }else{
-        let query = "SELECT id, hospital_id, code, patients_dob, status, name_of_institution, city, country, demographics_completed, initialpresentation_completed, pathology_completed, treatment_completed, followup_completed, healtheconomics_completed FROM questions where submited_by = ? and status = ? and demographics_completed = ? and initialpresentation_completed = ? and pathology_completed = ? and treatment_completed = ? and followup_completed = ? and healtheconomics_completed = ? order by id desc limit ?, ?"
+        let query = "SELECT id, hospital_id, patient_name, code, patients_dob, status, name_of_institution, city, country, demographics_completed, initialpresentation_completed, pathology_completed, treatment_completed, followup_completed, healtheconomics_completed FROM questions where submited_by = ? and status = ? and demographics_completed = ? and initialpresentation_completed = ? and pathology_completed = ? and treatment_completed = ? and followup_completed = ? and healtheconomics_completed = ? order by id desc limit ?, ?"
         db.query(query,  [userid, "1", "true", "true", "true", "true", "true", "true", parseInt(limit * range), parseInt(limit)], function (err, result, fields) {
           if (err) {
               console.log(err);
@@ -108,7 +108,7 @@ app.get('/api/questionincomplete', (req, res) => {
       let userrole = role       
       console.log(totalCount)
       if(userrole == 'admin'){
-        let query = "SELECT id, hospital_id, code, patients_dob, status, name_of_institution, city, country, demographics_completed, initialpresentation_completed, pathology_completed, treatment_completed, followup_completed, healtheconomics_completed FROM questions where status = ? and (demographics_completed= ? or initialpresentation_completed= ? or pathology_completed= ? or treatment_completed= ? or followup_completed= ? or healtheconomics_completed = ?) order by id desc limit ?, ?"
+        let query = "SELECT id, hospital_id, patient_name, code, patients_dob, status, name_of_institution, city, country, demographics_completed, initialpresentation_completed, pathology_completed, treatment_completed, followup_completed, healtheconomics_completed FROM questions where status = ? and (demographics_completed= ? or initialpresentation_completed= ? or pathology_completed= ? or treatment_completed= ? or followup_completed= ? or healtheconomics_completed = ?) order by id desc limit ?, ?"
         //console.log(query)
         db.query(query,  ["1", "false", "false", "false", "false", "false", "false", parseInt(limit * range), parseInt(limit)], function (err, result, fields) {
           if (err) {
@@ -123,7 +123,7 @@ app.get('/api/questionincomplete', (req, res) => {
               }            
         });
       }else{
-        let query = "SELECT id, hospital_id, code, patients_dob, status, name_of_institution, city, country, demographics_completed, initialpresentation_completed, pathology_completed, treatment_completed, followup_completed, healtheconomics_completed FROM questions where submited_by = ? and status = ? and (demographics_completed= ? or initialpresentation_completed= ? or pathology_completed= ? or treatment_completed= ? or followup_completed= ? or healtheconomics_completed = ?) order by id desc limit ?, ?"
+        let query = "SELECT id, hospital_id, patient_name, code, patients_dob, status, name_of_institution, city, country, demographics_completed, initialpresentation_completed, pathology_completed, treatment_completed, followup_completed, healtheconomics_completed FROM questions where submited_by = ? and status = ? and (demographics_completed= ? or initialpresentation_completed= ? or pathology_completed= ? or treatment_completed= ? or followup_completed= ? or healtheconomics_completed = ?) order by id desc limit ?, ?"
         //console.log(query)
         db.query(query,  [userid, "1", "false", "false", "false", "false", "false", "false", parseInt(limit * range), parseInt(limit)], function (err, result, fields) {
           if (err) {
