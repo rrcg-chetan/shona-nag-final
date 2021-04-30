@@ -20561,6 +20561,15 @@ html .content {
   margin-left: 260px;
 }
 
+@media (max-width: 1199px) {
+  html .content {
+    margin-left: 0px;
+  }
+  label {
+    font-size: 15px !important;
+  }
+}
+
 html .content.app-content {
   padding: calc(2rem + 4.45rem + 1.3rem) 2rem 0;
 }
