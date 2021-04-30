@@ -37,10 +37,10 @@ const db = mysql.createConnection({
     user: "root",
     host: "localhost",
     password: "",
-    database: "shona_nag"
+    database: "bhawna_ywbc"
 })
 
-app.get('/test', (req, res, next) => {
+app.get('/api/test', (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization");    
@@ -48,7 +48,7 @@ app.get('/test', (req, res, next) => {
   next();
 })
 
-app.get('/question', (req, res) => {
+app.get('/api/question', (req, res) => {
   range = req.query.page;
   limit = req.query.per_page;
   userid = req.query.submited_by;
@@ -94,7 +94,7 @@ app.get('/question', (req, res) => {
   });
 });
 
-app.get('/questionincomplete', (req, res) => {
+app.get('/api/questionincomplete', (req, res) => {
   range = req.query.page;
   limit = req.query.per_page;
   userid = req.query.submited_by;
@@ -142,7 +142,7 @@ app.get('/questionincomplete', (req, res) => {
   });
 });
 
-app.get('/allusers', cors(), (req, res, next) => {
+app.get('/api/allusers', cors(), (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization");
@@ -174,7 +174,7 @@ app.get('/allusers', cors(), (req, res, next) => {
 });
 });
 
-app.get('/users', cors(), (req, res, next) => {
+app.get('/api/users', cors(), (req, res, next) => {
   range = req.query.page;
   limit = req.query.per_page;  
   userid = req.query.submited_by;
@@ -229,7 +229,7 @@ app.get('/users', cors(), (req, res, next) => {
 
 });
 
-app.post('/adduser', cors(), async (req, res, next) => {
+app.post('/api/adduser', cors(), async (req, res, next) => {
   console.log(req.body);
   login_name= req.body.login_name; country= req.body.country; centre= req.body.centre; user_role= req.body.user_role; culture= req.body.culture; timezone= req.body.timezone; acc_dis= req.body.accountdisabled; pass_never= req.body.passexpires; must_change= req.body.nextloginpassword; cant_change= req.body.cannotchangepassword; user_title= req.body.user_title; first_name= req.body.first_name; last_name= req.body.last_name; name = req.body.name; email= req.body.email; password= bcrypt.hashSync(req.body.password, saltRounds); street_address= req.body.street_address; city= req.body.city; phone_1= req.body.phone_1; phone_2= req.body.phone_2; fax= req.body.fax; dateofbirth= req.body.dateofbirth; code= req.body.code; status= req.body.status; date_created= req.body.date_created;
   
@@ -255,7 +255,7 @@ app.post('/adduser', cors(), async (req, res, next) => {
     });
 });
 
-app.get('/getuserdetails/:id', cors(), async (req, res, next) => {
+app.get('/api/getuserdetails/:id', cors(), async (req, res, next) => {
   id= req.params.id;  
   db.query(
   "SELECT * FROM accounts where id = ?", [id], async function (error, results, fields) {
@@ -279,7 +279,7 @@ app.get('/getuserdetails/:id', cors(), async (req, res, next) => {
     });   
 });
 
-app.put('/updateuser/:id', cors(), async (req, res, next) => {
+app.put('/api/updateuser/:id', cors(), async (req, res, next) => {
   id= req.params.id;
   //console.log(req.body);
   login_name= req.body.login_name; country= req.body.country; centre= req.body.centre; user_role= req.body.user_role; culture= req.body.culture; timezone= req.body.timezone; acc_dis= req.body.acc_dis; pass_never= req.body.pass_never; must_change= req.body.must_change; cant_change= req.body.cant_change; user_title= req.body.user_title; first_name= req.body.first_name; last_name= req.body.last_name; name = req.body.name; email= req.body.email; street_address= req.body.street_address; city= req.body.city; phone_1= req.body.phone_1; phone_2= req.body.phone_2; fax= req.body.fax; dateofbirth= req.body.dateofbirth;
@@ -306,7 +306,7 @@ app.put('/updateuser/:id', cors(), async (req, res, next) => {
     });
 });
 
-app.post('/register', cors(), async (req, res, next) => {
+app.post('/api/register', cors(), async (req, res, next) => {
     name = req.body.name;
     email = req.body.email;
     password = bcrypt.hashSync(req.body.password, saltRounds),
@@ -401,13 +401,13 @@ res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Ty
     
   });*/
 
-  app.post('/patientdetails', cors(), async (req, res, next) => {
+  app.post('/api/patientdetails', cors(), async (req, res, next) => {
     console.log(req.body);
 
-    patient_name = req.body.patient_name; city = req.body.city; country = req.body.country; hospital_id = req.body.hospital_id; patient_initial = req.body.patient_initial; date_of_birth = req.body.date_of_birth; age_of_diagnosis = req.body.age_of_diagnosis; date_of_diagnosis = req.body.date_of_diagnosis; praffin = req.body.praffin; profession = req.body.profession; other_profession = req.body.other_profession; indian = req.body.indian; ethnicity = req.body.ethnicity; other_ethnicity = req.body.other_ethnicity; height = req.body.height; weight = req.body.weight; bmi = req.body.bmi; bsa = req.body.bsa; family_ho_cancer = req.body.family_ho_cancer; family_has_cancer = req.body.family_has_cancer; other_family_has_cancer = req.body.other_family_has_cancer; type_of_cancer = req.body.type_of_cancer; age_at_diagnosis_of_relative = req.body.age_at_diagnosis_of_relative; presenting_symptom = req.body.presenting_symptom; monthly_family_income = req.body.monthly_family_income; amount = req.body.amount; co_morbidities = req.body.co_morbidities; other_co_morbodities = req.body.other_co_morbodities; code= req.body.code; status= req.body.status; date_created= req.body.date_created; name_of_institution = req.body.name_of_institution; submited_by = req.body.submited_by; metastases_types= req.body.metastases_types; first_treatment_given= req.body.first_treatment_given; areaofrecurrence= req.body.areaofrecurrence; if_metastases= req.body.metastases_types; tobacco_addiction = req.body.tobacco_addiction; tobacco_addiction_type = req.body.tobacco_addiction_type; tobacco_no_of_years = req.body.tobacco_no_of_years; alcohol_addiction = req.body.alcohol_addiction; no_of_peg_per_day = req.body.no_of_peg_per_day; alcohol_no_of_years = req.body.alcohol_no_of_years; diet = req.body.diet; menstrual_history = req.body.menstrual_history; menstrual_history_irregular = req.body.menstrual_history_irregular; reproductivew_history_gravida = req.body.reproductivew_history_gravida; reproductivew_history_para = req.body.reproductivew_history_para; reproductivew_history_abortion = req.body.reproductivew_history_abortion; reproductivew_history_age_of_menarcy = req.body.reproductivew_history_age_of_menarcy; reproductivew_history_age_of_menopause = req.body.reproductivew_history_age_of_menopause; reproductivew_history_hrt_use = req.body.reproductivew_history_hrt_use; reproductivew_history_hrt_use_if_yes = req.body.reproductivew_history_hrt_use_if_yes; reproductivew_history_no_of_years_used = req.body.reproductivew_history_no_of_years_used;
+    patient_name = req.body.patient_name; city = req.body.city; country = req.body.country; hospital_id = req.body.hospital_id; patient_initial = req.body.patient_initial; date_of_birth = req.body.date_of_birth; age_of_diagnosis = req.body.age_of_diagnosis; date_of_diagnosis = req.body.date_of_diagnosis; praffin = req.body.praffin; profession = req.body.profession; other_profession = req.body.other_profession; indian = req.body.indian; ethnicity = req.body.ethnicity; other_ethnicity = req.body.other_ethnicity; height = req.body.height; weight = req.body.weight; bmi = req.body.bmi; bsa = req.body.bsa; family_ho_cancer = req.body.family_ho_cancer; family_has_cancer = req.body.family_has_cancer; other_family_has_cancer = req.body.other_family_has_cancer; type_of_cancer = req.body.type_of_cancer; age_at_diagnosis_of_relative = req.body.age_at_diagnosis_of_relative; presenting_symptom = req.body.presenting_symptom; monthly_family_income = req.body.monthly_family_income; amount = req.body.amount; co_morbidities = req.body.co_morbidities; other_co_morbodities = req.body.other_co_morbodities; code= req.body.code; status= req.body.status; date_created= req.body.date_created; name_of_institution = req.body.name_of_institution; submited_by = req.body.submited_by; metastases_types= req.body.metastases_types; first_treatment_given= req.body.first_treatment_given; areaofrecurrence= req.body.areaofrecurrence; if_metastases= req.body.metastases_types; tobacco_addiction = req.body.tobacco_addiction; tobacco_addiction_type = req.body.tobacco_addiction_type; tobacco_no_of_years = req.body.tobacco_no_of_years; alcohol_addiction = req.body.alcohol_addiction; no_of_peg_per_day = req.body.no_of_peg_per_day; alcohol_no_of_years = req.body.alcohol_no_of_years; diet = req.body.diet; menstrual_history = req.body.menstrual_history; menstrual_history_irregular = req.body.menstrual_history_irregular; cTbasedon = req.body.cTbasedon; cNbasedon = req.body.cNbasedon; cMbasedon = req.body.cMbasedon; reproductivew_history_gravida = req.body.reproductivew_history_gravida; reproductivew_history_para = req.body.reproductivew_history_para; reproductivew_history_abortion = req.body.reproductivew_history_abortion; reproductivew_history_age_of_menarcy = req.body.reproductivew_history_age_of_menarcy; reproductivew_history_age_of_menopause = req.body.reproductivew_history_age_of_menopause; reproductivew_history_hrt_use = req.body.reproductivew_history_hrt_use; reproductivew_history_hrt_use_if_yes = req.body.reproductivew_history_hrt_use_if_yes; reproductivew_history_no_of_years_used = req.body.reproductivew_history_no_of_years_used;
 
     db.query(
-    "insert into questions (`patient_name`, `city`, `country`, `hospital_id`, `patients_initial`, `patients_dob`, `age_of_diagnosis`, `date_of_diagnosis_of_bc`, `paraffin_blocks`, `profession`, `profession_if_other`, `indian`, `ethnicity`, `ethnicity_if_other`, `patients_height`, `patients_weight`, `patients_bmi`, `bsa`, `family_have_cancer`, `which_relative`, `type_other_family_name`, `type_of_cancer`, `age_at_diagnosis`, `presenting_symptoms`, `family_income_type`, `family_income_amount`, `co_morbidities`, `co_morbidities_if_other`, `code`, `status`, `date_submitted`, `name_of_institution`, `submited_by`, `metastases_types`, `first_treatment_given`, `area_of_recurrence`, `if_metastases`, `tobacco_addiction`, `tobacco_addiction_type`, `tobacco_no_of_years`, `alcohol_addiction`, `no_of_peg_per_day`, `alcohol_no_of_years`, `diet`, `menstrual_history`, `menstrual_history_if_irregular`, `reproductivew_history_gravida`, `reproductivew_history_para`, `reproductivew_history_abortion`, `reproductivew_history_age_of_menarcy`, `reproductivew_history_age_of_menopause`, `reproductivew_history_hrt_use`, `reproductivew_history_hrt_use_if_yes`, `reproductivew_history_no_of_years_used`, `demographics_completed`, `initialpresentation_completed`, `pathology_completed`, `treatment_completed`, `followup_completed`, `healtheconomics_completed`) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [patient_name, city, country, hospital_id, patient_initial, date_of_birth, age_of_diagnosis, date_of_diagnosis, praffin, profession, other_profession, indian, ethnicity, other_ethnicity, height, weight, bmi, bsa, family_ho_cancer, family_has_cancer, other_family_has_cancer, type_of_cancer, age_at_diagnosis_of_relative, presenting_symptom, monthly_family_income, amount, co_morbidities, other_co_morbodities, code, status, date_created, name_of_institution, submited_by, JSON.stringify(metastases_types), JSON.stringify(first_treatment_given), JSON.stringify(areaofrecurrence), JSON.stringify(if_metastases),tobacco_addiction, tobacco_addiction_type, tobacco_no_of_years, alcohol_addiction, no_of_peg_per_day, alcohol_no_of_years, diet, menstrual_history, JSON.stringify(menstrual_history_irregular), reproductivew_history_gravida, reproductivew_history_para, reproductivew_history_abortion, reproductivew_history_age_of_menarcy, reproductivew_history_age_of_menopause, reproductivew_history_hrt_use, reproductivew_history_hrt_use_if_yes, reproductivew_history_no_of_years_used, "true", "false", "false", "false", "false", "false"], async function (error, results, fields) {
+    "insert into questions (`patient_name`, `city`, `country`, `hospital_id`, `patients_initial`, `patients_dob`, `age_of_diagnosis`, `date_of_diagnosis_of_bc`, `paraffin_blocks`, `profession`, `profession_if_other`, `indian`, `ethnicity`, `ethnicity_if_other`, `patients_height`, `patients_weight`, `patients_bmi`, `bsa`, `family_have_cancer`, `which_relative`, `type_other_family_name`, `type_of_cancer`, `age_at_diagnosis`, `presenting_symptoms`, `family_income_type`, `family_income_amount`, `co_morbidities`, `co_morbidities_if_other`, `code`, `status`, `date_submitted`, `name_of_institution`, `submited_by`, `metastases_types`, `first_treatment_given`, `area_of_recurrence`, `if_metastases`, `tobacco_addiction`, `tobacco_addiction_type`, `tobacco_no_of_years`, `alcohol_addiction`, `no_of_peg_per_day`, `alcohol_no_of_years`, `diet`, `menstrual_history`, `menstrual_history_if_irregular`, `ct_based_one`, `cn_bases_on`, `cm_based_on`, `reproductivew_history_gravida`, `reproductivew_history_para`, `reproductivew_history_abortion`, `reproductivew_history_age_of_menarcy`, `reproductivew_history_age_of_menopause`, `reproductivew_history_hrt_use`, `reproductivew_history_hrt_use_if_yes`, `reproductivew_history_no_of_years_used`, `demographics_completed`, `initialpresentation_completed`, `pathology_completed`, `treatment_completed`, `followup_completed`, `healtheconomics_completed`) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [patient_name, city, country, hospital_id, patient_initial, date_of_birth, age_of_diagnosis, date_of_diagnosis, praffin, profession, other_profession, indian, ethnicity, other_ethnicity, height, weight, bmi, bsa, family_ho_cancer, family_has_cancer, other_family_has_cancer, type_of_cancer, age_at_diagnosis_of_relative, presenting_symptom, monthly_family_income, amount, co_morbidities, other_co_morbodities, code, status, date_created, name_of_institution, submited_by, JSON.stringify(metastases_types), JSON.stringify(first_treatment_given), JSON.stringify(areaofrecurrence), JSON.stringify(if_metastases),tobacco_addiction, tobacco_addiction_type, tobacco_no_of_years, alcohol_addiction, no_of_peg_per_day, alcohol_no_of_years, diet, menstrual_history, JSON.stringify(menstrual_history_irregular), JSON.stringify(req.body.cTbasedon), JSON.stringify(req.body.cNbasedon), JSON.stringify(req.body.cMbasedon), reproductivew_history_gravida, reproductivew_history_para, reproductivew_history_abortion, reproductivew_history_age_of_menarcy, reproductivew_history_age_of_menopause, reproductivew_history_hrt_use, reproductivew_history_hrt_use_if_yes, reproductivew_history_no_of_years_used, "true", "false", "false", "false", "false", "false"], async function (error, results, fields) {
         if (error) {
             res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
@@ -429,7 +429,7 @@ res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Ty
       });
   });
 
-  app.post('/updatepatientdemographydetails', cors(), async (req, res, next) => {
+  app.post('/api/updatepatientdemographydetails', cors(), async (req, res, next) => {
     //console.log(req.body)
     var fieldsToUpdate = [];
     for (const field of Object.entries(req.body)) {
@@ -456,7 +456,7 @@ res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Ty
     });
   })
 
-  app.get('/getfulldetails/:code', cors(), async (req, res, next) => {
+  app.get('/api/getfulldetails/:code', cors(), async (req, res, next) => {
     code= req.params.code;  
     db.query(
     "SELECT * FROM questions where code = ?", [code], async function (error, results, fields) {
@@ -480,9 +480,9 @@ res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Ty
       });   
   });
 
-  app.post('/patientinitialpresentationdetails', cors(), async (req, res, next) => {
+  app.post('/api/patientinitialpresentationdetails', cors(), async (req, res, next) => {
     //console.log(req.body);
-    code= req.body.code, presentation = req.body.presentation, at_diagnosis = req.body.at_diagnosis, laterality = req.body.laterality, cT = req.body.cT, cTbasedon = JSON.stringify(req.body.cTbasedon), cN = req.body.cN, cNbasedon = JSON.stringify(req.body.cNbasedon), cM = req.body.cM, cMbasedon = JSON.stringify(req.body.cMbasedon), metastases = req.body.metastases, total_number_of_metastases = req.body.total_number_of_metastases, metastases_types = req.body.metastases_types, other_metastases_types = req.body.other_metastases_types, first_treatment_given = req.body.first_treatment_given, germline_testing_done = req.body.germline_testing_done, genetics = req.body.genetics, other_genetics = req.body.other_genetics, pregnancy_associated_breast_cancer = req.body.pregnancy_associated_breast_cancer, treatment_text = req.body.treatment_text, metastases_text = req.body.metastases_text
+    code= req.body.code, presentation = req.body.presentation, at_diagnosis = req.body.at_diagnosis, laterality = req.body.laterality, cT = req.body.cT, cTbasedon = req.body.cTbasedon, cN = req.body.cN, cNbasedon = req.body.cNbasedon, cM = req.body.cM, cMbasedon = req.body.cMbasedon, metastases = req.body.metastases, total_number_of_metastases = req.body.total_number_of_metastases, metastases_types = req.body.metastases_types, other_metastases_types = req.body.other_metastases_types, first_treatment_given = req.body.first_treatment_given, germline_testing_done = req.body.germline_testing_done, genetics = req.body.genetics, other_genetics = req.body.other_genetics, pregnancy_associated_breast_cancer = req.body.pregnancy_associated_breast_cancer, treatment_text = req.body.treatment_text, metastases_text = req.body.metastases_text
 
     db.query(
     "update questions set `presentation` = ? , `at_diagnosis` = ? , `laterality` = ?, `cT` = ?, `ct_based_one` = ?, `cN` = ? , `cn_bases_on` = ? , `cM` = ? , `cm_based_on` = ? , `metastases` = ?, `total_number_of_metastatus` = ?, `metastases_types` = ? , `other_metastases_types` = ?, `first_treatment_given` = ?, `germline_testing` = ?, `genetic_testing_done` = ? , `genetic_testing_done_and_other` = ? , `pregnancy_associated_b_c` = ?, `initialpresentation_completed` = ? where `code` = ?", [presentation, at_diagnosis, laterality, cT, JSON.stringify(cTbasedon), cN, JSON.stringify(cNbasedon), cM, JSON.stringify(cMbasedon), metastases, total_number_of_metastases, JSON.stringify(metastases_types), other_metastases_types, JSON.stringify(first_treatment_given), germline_testing_done, genetics, other_genetics, pregnancy_associated_breast_cancer, "true", code], async function (error, results, fields) {
@@ -509,7 +509,7 @@ res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Ty
       });
   });
 
-  app.post('/updatepatientdetails', cors(), async (req, res, next) => {
+  app.post('/api/updatepatientdetails', cors(), async (req, res, next) => {
     //console.log(req.body)
     var fieldsToUpdate = [];
     for (const field of Object.entries(req.body)) {
@@ -538,7 +538,7 @@ res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Ty
     });
   })
 
-  app.post('/patientpathologydetails', cors(), async (req, res, next) => {
+  app.post('/api/patientpathologydetails', cors(), async (req, res, next) => {
     console.log(req.body);
 
     pathologytype = req.body.pathologytype, other_type = req.body.other_type, grade = req.body.grade, grade_number = req.body.grade_number, code = req.body.code, pT = req.body.pT, pN = req.body.pN, ypT = req.body.ypT, ypN = req.body.ypN, pathologicalsizeofcancer = req.body.pathologicalsizeofcancer, ER = req.body.ER, PR = req.body.PR, HER2 = req.body.HER2, showher = req.body.showher, dcs = req.body.dcs
@@ -568,7 +568,7 @@ res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Ty
       });
   });
 
-  app.post('/patienttreatmentdetails', cors(), async (req, res, next) => {
+  app.post('/api/patienttreatmentdetails', cors(), async (req, res, next) => {
     console.log(req.body);
 
     /*pathologytype = req.body.pathologytype, other_type = req.body.other_type, grade = req.body.grade, code = req.body.code, pT = req.body.pT, pN = req.body.pN, ypT = req.body.ypT, ypN = req.body.ypN, pathologicalsizeofcancer = req.body.pathologicalsizeofcancer, ER = req.body.ER, PR = req.body.PR, HER2 = req.body.HER2, showher = req.body.showher*/
@@ -600,7 +600,7 @@ res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Ty
       });
   });
 
-  app.post('/patientfollowupdetails', cors(), async (req, res, next) => {
+  app.post('/api/patientfollowupdetails', cors(), async (req, res, next) => {
     console.log(req.body);
 
     recurrence = req.body.recurrence, dateofrecurrence = req.body.dateofrecurrence, areaofrecurrence = req.body.areaofrecurrence, detectionofrecurrence = req.body.detectionofrecurrence, recurrenceifmetastases = req.body.recurrenceifmetastases, recurrenceifmetastasesifother = req.body.recurrenceifmetastasesifother, lostfollowup = req.body.lostfollowup, dateofdeath = req.body.dateofdeath, dateoflastfollowup = req.body.dateoflastfollowup, if_metastases = req.body.if_metastases, rebiopsy = req.body.rebiopsy, types_of_rebiopsy = req.body.types_of_rebiopsy, code = req.body.code
@@ -630,7 +630,7 @@ res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Ty
       });
   });
 
-  app.post('/patienthealtheconomicsdetails', cors(), async (req, res, next) => {
+  app.post('/api/patienthealtheconomicsdetails', cors(), async (req, res, next) => {
     console.log(req.body);
 
     registeredas = req.body.registeredas, patienthasinsurance = req.body.patienthasinsurance, insurancecurrency = req.body.insurancecurrency, insuranceamount = req.body.insuranceamount, costsincurredbefore = req.body.costsincurredbefore, costsincurredbeforeinsuranceamount = req.body.costsincurredbeforeinsuranceamount, costofsurgery = req.body.costofsurgery, surgeryamount = req.body.surgeryamount, costofradiotherapy = req.body.costofradiotherapy, radiotherapyamount = req.body.radiotherapyamount, costofchemotherapy = req.body.costofchemotherapy, chemotherapyamount = req.body.chemotherapyamount, stayincitycost = req.body.stayincitycost, stayincityamount = req.body.stayincityamount, travelcosts = req.body.travelcosts, travelcostsamount = req.body.travelcostsamount, costoffollowupvisit = req.body.costoffollowupvisit, costoffollowupvisitamount = req.body.costoffollowupvisitamount, code = req.body.code
@@ -660,7 +660,7 @@ res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Ty
       });
   });
 
-  app.post('/deletepatientdata/', cors(), async (req, res, next) => {
+  app.post('/api/deletepatientdata/', cors(), async (req, res, next) => {
     code= req.body.code;  
     console.log(code)
     db.query(
