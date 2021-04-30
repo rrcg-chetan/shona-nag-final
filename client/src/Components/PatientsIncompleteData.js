@@ -15,23 +15,18 @@ const PatientsIncompleteData = props => {
     
     const columns = [
         {
-          name: 'Hospital ID',
-          selector: 'id',
-          sortable: true,
-        },
-        {
-          name: 'Generated Id',
+          name: 'Id',
           selector: 'code',
           sortable: true
         },
         {
-          name: 'Date of Birth',
-          selector: 'patients_dob',
+          name: 'Patient Name',
+          selector: 'patient_name',
           sortable: false
         },
         {
-            name: 'Status',
-            selector: 'status',
+            name: 'Date of Birth',
+            selector: 'patients_dob',
             sortable: false
         },
         {
@@ -52,7 +47,7 @@ const PatientsIncompleteData = props => {
         {
             name: "Options",
             sortable: false,
-            cell: d => <div><a href={'demography/share/'+d.code}><svg data-v-9a6e255c="" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" id="invoice-row-4996-send-icon" className="cursor-pointer feather feather-send"><line data-v-9a6e255c="" x1="22" y1="2" x2="11" y2="13"></line><polygon data-v-9a6e255c="" points="22 2 15 22 11 13 2 9 22 2"></polygon></svg></a><span style={{ color: "#7367f0"}} id={d.code} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) deletePatientRecord(e) } }><svg data-v-9a6e255c="" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" class="cursor-pointer mx-1 feather feather-trash"><polyline data-v-9a6e255c="" points="3 6 5 6 21 6"></polyline><path data-v-9a6e255c="" d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></span>
+            cell: d => <div><span style={{ color: "#7367f0"}} id={d.code} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) deletePatientRecord(e) } }><svg data-v-9a6e255c="" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" class="cursor-pointer mx-1 feather feather-trash"><polyline data-v-9a6e255c="" points="3 6 5 6 21 6"></polyline><path data-v-9a6e255c="" d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></span>
             <a href=
             {(() => {
                 if(d.demographics_completed === "false") { return '/demography/edit/'+d.code }
