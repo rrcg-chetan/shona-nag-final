@@ -416,42 +416,42 @@ default:
                     return (
                     <AvForm  onSubmit= {() => this.sendPatientDemographyDetails()}>
                     <div className="row">
-                    <div className="col-md-3">
+                    <div className="col-md-4">
                       <AvGroup>            
                         <Label for='name'>Name of Patient</Label>
                         <AvInput name='name' value={patient.patient_name} onChange={(e) => this.setState({ patient_name: e.target.value})} id='name' required />
                         <AvFeedback>Please enter a Patient's name!</AvFeedback>            
                       </AvGroup>
                       </div>
-                      <div className="col-md-3">
+                      <div className="col-md-4">
                       <AvGroup>            
                         <Label for='city'>City</Label>
                         <AvInput name='city' id='city' required value={patient.city} onChange={(e) => this.setState({ city: e.target.value})} />
                         <AvFeedback>Please enter a valid city name!</AvFeedback>            
                       </AvGroup>
                       </div>
-                      <div className="col-md-3">
+                      <div className="col-md-4">
                       <AvGroup>            
                         <Label for='country'>Country</Label>
                         <AvInput name='country' id='country' required value={patient.country} onChange={(e) => this.setState({ country: e.target.value})} />
                         <AvFeedback>Please enter a Country!</AvFeedback>
                       </AvGroup>
                       </div>
-                      <div className="col-md-3">
+                      <div className="col-md-4">
                       <AvGroup>            
                         <Label for='hospitalid'>Hospital ID</Label>
                         <AvField name='hospitalid' disabled id='hospitalid' required value={patient.hospital_id} onChange={(e) => this.setState({ hospital_id: e.target.value})}  />
                         <AvFeedback>Please enter the Hospital ID!</AvFeedback>
                       </AvGroup>
                       </div>
-                      <div className="col-md-3">
+                      <div className="col-md-4">
                       <AvGroup>            
                         <Label for='patientinitial'>Patient's Initial</Label>
                         <AvField name='patientinitial' id='patientinitial' required value={patient.patients_initial} onChange={(e) => this.setState({ patients_initial: e.target.value})}  />
                         <AvFeedback>Please enter the Patient's Initial!</AvFeedback>
                       </AvGroup>
                       </div>
-                      <div className="col-md-3">
+                      <div className="col-md-4">
                       <AvGroup>
                         <Label for='dateofbirth'>Date of Birth</Label><br />
                         <DatePicker peekNextMonth showMonthDropdown showYearDropdown dropdownMode= "scroll" className="form-control date-picker-block w-100" dateFormat="dd-MM-yyyy" name="dob" id="dob" selected={this.state.startDate} onSelect={this.handleSelect} onChange={this.handleChange} />
@@ -459,14 +459,14 @@ default:
                         <AvFeedback>Please enter your DOB!</AvFeedback>
                       </AvGroup>
                       </div>
-                      <div className="col-md-3">
+                      <div className="col-md-4">
                       <AvGroup>
                         <Label for='ageofdiagnosis'>Age of Diagnosis</Label>
                         <AvInput name='ageofdiagnosis' id='ageofdiagnosis' required value={patient.age_of_diagnosis} onChange={(e) => this.setState({ age_of_diagnosis: e.target.value})}  />
                         <AvFeedback>Please enter Age of Diagnosis!</AvFeedback>
                       </AvGroup>
                       </div>
-                      <div className="col-md-3">
+                      <div className="col-md-4">
                       <AvGroup>
                         <Label for='dateofdiagnosis'>Date of diagnosis of breast cancer</Label><br />
                         <DatePicker peekNextMonth showMonthDropdown showYearDropdown dropdownMode= "scroll" className="form-control date-picker-block w-100" dateFormat="dd-MM-yyyy" name="dtofdiag" id="dtofdiag" selected={this.state.startDateDOD} onSelect={this.handleSelect} onChange={this.handleChangeDOD} />
@@ -474,7 +474,8 @@ default:
                         <AvFeedback>Please enter your Date of diagnosis of breast cancer!</AvFeedback>
                       </AvGroup>
                       </div>
-                      <div className="col-md-3">
+                      <div className="col-md-12"></div>
+                      <div className="col-md-4">
                       <Label for='paraffin'>Paraffin blocks available</Label>
                       <AvRadioGroup name='paraffin' required value={patient.paraffin_blocks} onChange={(e) => this.setState({ paraffin_blocks: e.target.value})} >
                         <div className="row">
@@ -497,7 +498,7 @@ default:
                       </AvRadioGroup>
                       </div>    
                       {showProfession && (
-                            <div className="col-md-3">
+                            <div className="col-md-5">
                             <AvGroup>
                               <Label for='otherprofession'>If Other Please mention Profession</Label>
                               <AvField name='otherprofession' id='otherprofession' value={patient.profession_if_other} onChange={(e) => this.setState({ profession_if_other: e.target.value})}  />
@@ -602,21 +603,21 @@ default:
                             </div>
                           )}
                       <div className="col-md-12"></div>
-                      <div className="col-md-2">
+                      <div className="col-md-3">
                       <AvGroup>            
                         <Label for='typeofcancer'>Type of Cancer</Label>
                         <AvField name='typeofcancer' id='typeofcancer' required value={patient.type_of_cancer} onChange={(e) => this.setState({ type_of_cancer: e.target.value})}  />
                         <AvFeedback>Please enter the Type of Cancer!</AvFeedback>
                       </AvGroup>
                       </div>
-                      <div className="col-md-2">
+                      <div className="col-md-3">
                       <AvGroup>            
                         <Label for='diagnosisofrelativeage'>Age at diagnosis of relative</Label>
                         <AvField name='diagnosisofrelativeage' id='diagnosisofrelativeage' required value={patient.age_at_diagnosis} onChange={(e) => this.setState({ age_at_diagnosis: e.target.value})}  />
                         <AvFeedback>Please enter the Age at diagnosis of relative!</AvFeedback>
                       </AvGroup>
                       </div>
-                      <div className="col-md-4">
+                      <div className="col-md-6">
                       <Label for='presentsymptoms'>Presenting Symptom</Label>
                       <AvRadioGroup name='presentsymptoms' required value={patient.presenting_symptoms} onChange={(e) => this.setState({ presenting_symptoms: e.target.value})} >
                         <div className="row">
@@ -625,7 +626,7 @@ default:
                         </div>
                       </AvRadioGroup>
                       </div>
-                      <div className="col-md-2">
+                      <div className="col-md-3">
                       <AvGroup>            
                         <Label for='monthlyfamilyincome'>Monthly Family Income</Label>
                         <AvInput type='select' name='monthlyfamilyincome' id='monthlyfamilyincome'required value={patient.family_income_type} onChange={(e) => this.setState({ family_income_type: e.target.value})}>
@@ -636,14 +637,14 @@ default:
                         <AvFeedback>Please enter the Monthly Family Income!</AvFeedback>
                       </AvGroup>
                       </div>
-                      <div className="col-md-2">
+                      <div className="col-md-3">
                         <AvGroup>
                           <Label for='monthlyfamilyincomeamount'>Amount</Label>
                           <AvField name='monthlyfamilyincomeamount' id='monthlyfamilyincomeamount' required value={patient.family_income_amount} onChange={(e) => this.setState({ family_income_amount: e.target.value})}  />
                           <AvFeedback>Please enter the Amount!</AvFeedback>
                         </AvGroup>
                       </div>
-                      <div className="col-md-9">
+                      <div className="col-md-8">
                         <Label for='comorbidities'>Co-morbidities</Label>
                         <AvRadioGroup name='comorbidities' required value={patient.co_morbidities} onChange={(e) => this.setState({ co_morbidities: e.target.value})} >
                           <div className="row">
@@ -660,7 +661,7 @@ default:
                         </AvRadioGroup>
                         </div>
                         {showMorbidities && (
-                            <div className="col-md-3">
+                            <div className="col-md-4">
                             <AvGroup>
                               <Label for='othermorbidities'>If Other Please mention Morbidities</Label>
                               <AvField name='othermorbidities' id='othermorbidities' value={patient.co_morbidities_if_other} onChange={(e) => this.setState({ co_morbidities_if_other: e.target.value})}  />

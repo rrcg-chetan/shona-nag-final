@@ -126,7 +126,7 @@ class FollowUp extends React.Component {
   handleChangeDOR(date) {
     this.setState({
       startDateDOR: date,
-      dateofrecurrence: moment(date).format('DD-MM-YYYY')
+      date_of_recurrence: moment(date).format('DD-MM-YYYY')
     })
     document.getElementById("dateofrecurrence").style.color = "#fff"
     document.getElementById("dateofrecurrence").style.backgroundColor = "#fff"
@@ -248,7 +248,7 @@ return (
                   <AvCheckboxGroup name='areofrecurrence' required >
                     <div className="row">
                     {this.state.areaofrecurrence.map((itemTreat, i) =>
-                      <div className="col-md-2"><AvCheckbox customInput label={itemTreat.text} value={itemTreat.text} onChange={this.onToggle.bind(this, i)} /></div>                      
+                      <div className="col-md-3"><AvCheckbox customInput label={itemTreat.text} value={itemTreat.text} onChange={this.onToggle.bind(this, i)} /></div>                      
                     )} 
                     </div>
                   </AvCheckboxGroup>                  
@@ -265,12 +265,12 @@ return (
                         <AvFeedback>Please select Detection of recurrence!</AvFeedback>
                     </AvGroup>
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-md-8">
                       <Label for='type_of_metastases'>Types of Metastases</Label>
                       <AvCheckboxGroup name='type_of_metastases' required >
                         <div className="row">
                         {this.state.metastases_types.map((item, i) =>
-                          <div className="col-md-2"><AvCheckbox customInput label={item.text} value={item.text} onChange={this.onToggleMeta.bind(this, i)} /></div>                      
+                          <div className="col-md-3"><AvCheckbox customInput label={item.text} value={item.text} onChange={this.onToggleMeta.bind(this, i)} /></div>                      
                         )}                          
                         </div>
                       </AvCheckboxGroup>

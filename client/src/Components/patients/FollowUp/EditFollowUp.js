@@ -108,9 +108,9 @@ componentDidMount() {
           //console.log(check)
           if(check === true){
             //console.log(check);
-            return (<div className="col-md-2"><AvCheckbox customInput label={item.text} value={item.text} onChange={this.onToggle.bind(this, i)} checked /></div>) 
+            return (<div className="col-md-3"><AvCheckbox customInput label={item.text} value={item.text} onChange={this.onToggle.bind(this, i)} checked /></div>) 
           }else{
-            return (<div className="col-md-2"><AvCheckbox customInput label={item.text} value={item.text} onChange={this.onToggle.bind(this, i)} /></div>) 
+            return (<div className="col-md-3"><AvCheckbox customInput label={item.text} value={item.text} onChange={this.onToggle.bind(this, i)} /></div>) 
           }
         }    
         )
@@ -122,9 +122,9 @@ componentDidMount() {
         //console.log(check)
         if(check === true){
           //console.log(check);
-          return (<div className="col-md-2"><AvCheckbox customInput label={item.text} value={item.text} onChange={this.onToggleMeta.bind(this, i)} checked /></div>) 
+          return (<div className="col-md-3"><AvCheckbox customInput label={item.text} value={item.text} onChange={this.onToggleMeta.bind(this, i)} checked /></div>) 
         }else{
-          return (<div className="col-md-2"><AvCheckbox customInput label={item.text} value={item.text} onChange={this.onToggleMeta.bind(this, i)} /></div>) 
+          return (<div className="col-md-3"><AvCheckbox customInput label={item.text} value={item.text} onChange={this.onToggleMeta.bind(this, i)} /></div>) 
         }
       }    
       )

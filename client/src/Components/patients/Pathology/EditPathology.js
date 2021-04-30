@@ -197,12 +197,12 @@ return (
                   </AvGroup>
                   </div>
                 )}  
-                <div className="col-md-2">
+                <div className="col-md-3">
                 <Label for='grade'>Grade</Label>
                 <AvRadioGroup name='grade' value={patient.pathology_grade} required onChange={(e) => this.setState({ pathology_grade: e.target.value })} >
                   <div className="row">
-                    <div className="col-md-3"><AvRadio customInput label='Yes' value='Yes' onChange={ () => this.showGrade("Yes") } /></div>
-                    <div className="col-md-3"><AvRadio customInput label='No' value='No' onChange={ () => this.showGrade("No") } /></div>
+                    <div className="col-md-4"><AvRadio customInput label='Yes' value='Yes' onChange={ () => this.showGrade("Yes") } /></div>
+                    <div className="col-md-4"><AvRadio customInput label='No' value='No' onChange={ () => this.showGrade("No") } /></div>
                   </div>
                   <AvFeedback>Please select the Grade!</AvFeedback>
                 </AvRadioGroup>                

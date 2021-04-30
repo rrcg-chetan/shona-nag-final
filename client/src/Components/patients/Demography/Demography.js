@@ -79,6 +79,25 @@ import axios from 'axios';
               { text: 'Painless', checked: false },      
               { text: 'Painful', checked: false },                     
             ],
+            cTbasedon: [
+              { text: 'Clinical', checked: false },
+              { text: 'Mammorgam', checked: false },
+              { text: 'MRI', checked: false },
+              { text: 'Ultrasound', checked: false },
+            ],
+            cNbasedon: [
+              { text: 'Clinical', checked: false },
+              { text: 'Mammorgam', checked: false },
+              { text: 'MRI', checked: false },
+              { text: 'Ultrasound', checked: false },
+            ],
+            cMbasedon: [
+              { text: 'Clinical', checked: false },
+              { text: 'CT Scan', checked: false },
+              { text: 'Bone', checked: false },
+              { text: 'Pet-CT Scan', checked: false },
+              { text: 'Pet-MRI', checked: false },
+            ],
             demographicsStatus: "",
             loading: false,
             height: 0,
@@ -125,7 +144,7 @@ import axios from 'axios';
           const userid = user.userid       
           const hospital_id = user.hospitalid   
           
-          axios.post(`/patientdetails`, { patient_name: this.state.patient_name, city: this.state.city, country: this.state.country, patient_initial: this.state.patient_initial, date_of_birth: this.state.date_of_birth, age_of_diagnosis: this.state.age_of_diagnosis, date_of_diagnosis: this.state.date_of_diagnosis, praffin: this.state.praffin, profession: this.state.profession, other_profession: this.state.other_profession, indian: this.state.indian, ethnicity: this.state.ethnicity, other_ethnicity: this.state.other_ethnicity, height: this.state.height, weight: this.state.weight, bmi: this.state.bmivalue, bsa: this.state.bsavalue, family_ho_cancer: this.state.family_ho_cancer, family_has_cancer: this.state.family_has_cancer, other_family_has_cancer: this.state.other_family_has_cancer, type_of_cancer: this.state.type_of_cancer, age_at_diagnosis_of_relative: this.state.age_at_diagnosis_of_relative, presenting_symptom: this.state.presenting_symptom, monthly_family_income: this.state.monthly_family_income, amount: this.state.amount, co_morbidities: this.state.co_morbidities, other_co_morbodities: this.state.other_co_morbodities, code: code, status: 1, date_created: Math.floor(Date.now()/1000), name_of_institution: name_of_institution, submited_by: userid, hospital_id: hospital_id, metastases_types: this.state.metastases_types, first_treatment_given: this.state.first_treatment_given, areaofrecurrence: this.state.areaofrecurrence, tobacco_addiction: this.state.tobacco_addiction, tobacco_addiction_type: this.state.tobacco_addiction_type, tobacco_no_of_years: this.state.tobacco_no_of_years, alcohol_addiction: this.state.alcohol_addiction, no_of_peg_per_day: this.state.no_of_peg_per_day, alcohol_no_of_years: this.state.alcohol_no_of_years, diet: this.state.diet, menstrual_history: this.state.menstrual_history, menstrual_history_irregular: this.state.menstrual_history_irregular, reproductivew_history_gravida: this.state.reproductivew_history_gravida, reproductivew_history_para: this.state.reproductivew_history_para, reproductivew_history_abortion: this.state.reproductivew_history_abortion, reproductivew_history_age_of_menarcy: this.state.reproductivew_history_age_of_menarcy, reproductivew_history_age_of_menopause: this.state.reproductivew_history_age_of_menopause, reproductivew_history_hrt_use: this.state.reproductivew_history_hrt_use, reproductivew_history_hrt_use_if_yes: this.state.reproductivew_history_hrt_use_if_yes, reproductivew_history_no_of_years_used: this.state.reproductivew_history_no_of_years_used  })
+          axios.post(`/patientdetails`, { patient_name: this.state.patient_name, city: this.state.city, country: this.state.country, patient_initial: this.state.patient_initial, date_of_birth: this.state.date_of_birth, age_of_diagnosis: this.state.age_of_diagnosis, date_of_diagnosis: this.state.date_of_diagnosis, praffin: this.state.praffin, profession: this.state.profession, other_profession: this.state.other_profession, indian: this.state.indian, ethnicity: this.state.ethnicity, other_ethnicity: this.state.other_ethnicity, height: this.state.height, weight: this.state.weight, bmi: this.state.bmivalue, bsa: this.state.bsavalue, family_ho_cancer: this.state.family_ho_cancer, family_has_cancer: this.state.family_has_cancer, other_family_has_cancer: this.state.other_family_has_cancer, type_of_cancer: this.state.type_of_cancer, age_at_diagnosis_of_relative: this.state.age_at_diagnosis_of_relative, presenting_symptom: this.state.presenting_symptom, monthly_family_income: this.state.monthly_family_income, amount: this.state.amount, co_morbidities: this.state.co_morbidities, other_co_morbodities: this.state.other_co_morbodities, code: code, status: 1, date_created: Math.floor(Date.now()/1000), name_of_institution: name_of_institution, submited_by: userid, hospital_id: hospital_id, metastases_types: this.state.metastases_types, first_treatment_given: this.state.first_treatment_given, areaofrecurrence: this.state.areaofrecurrence, tobacco_addiction: this.state.tobacco_addiction, tobacco_addiction_type: this.state.tobacco_addiction_type, tobacco_no_of_years: this.state.tobacco_no_of_years, alcohol_addiction: this.state.alcohol_addiction, no_of_peg_per_day: this.state.no_of_peg_per_day, alcohol_no_of_years: this.state.alcohol_no_of_years, diet: this.state.diet, menstrual_history: this.state.menstrual_history, menstrual_history_irregular: this.state.menstrual_history_irregular, cTbasedon: this.state.cTbasedon, cNbasedon: this.state.cNbasedon, cMbasedon: this.state.cMbasedon, reproductivew_history_gravida: this.state.reproductivew_history_gravida, reproductivew_history_para: this.state.reproductivew_history_para, reproductivew_history_abortion: this.state.reproductivew_history_abortion, reproductivew_history_age_of_menarcy: this.state.reproductivew_history_age_of_menarcy, reproductivew_history_age_of_menopause: this.state.reproductivew_history_age_of_menopause, reproductivew_history_hrt_use: this.state.reproductivew_history_hrt_use, reproductivew_history_hrt_use_if_yes: this.state.reproductivew_history_hrt_use_if_yes, reproductivew_history_no_of_years_used: this.state.reproductivew_history_no_of_years_used  })
           .then((response) => {
             //console.log(JSON.stringify(response));
             if(response.data.success === 'Demographics Submitted Sucessfully!'){
@@ -133,7 +152,7 @@ import axios from 'axios';
               history.push(`/initial-presentation/${code}`)               
             }else{
               this.setState({
-                demographicsStatus: response.data.failed,
+                /*demographicsStatus: response.data.failed,*/
                 loading:false
               });
             }
@@ -447,42 +466,42 @@ default:
                         {this.state.demographicsStatus}
                       </div>
                     </div>
-                    <div className="col-md-3">
+                    <div className="col-md-4">
                       <AvGroup>            
                         <Label for='name'>Name of Patient</Label>
                         <AvInput name='name' value={this.state.patient_name} onChange={(e) => this.setState({ patient_name: e.target.value})} id='name' required />
                         <AvFeedback>Please enter a Patient's name!</AvFeedback>            
                       </AvGroup>
                       </div>
-                      <div className="col-md-3">
+                      <div className="col-md-4">
                       <AvGroup>            
                         <Label for='city'>City</Label>
                         <AvInput name='city' id='city' required value={this.state.city} onChange={(e) => this.setState({ city: e.target.value})} />
                         <AvFeedback>Please enter a valid city name!</AvFeedback>            
                       </AvGroup>
                       </div>
-                      <div className="col-md-3">
+                      <div className="col-md-4">
                       <AvGroup>            
                         <Label for='country'>Country</Label>
                         <AvInput name='country' id='country' required value={this.state.country} onChange={(e) => this.setState({ country: e.target.value})} />
                         <AvFeedback>Please enter a Country!</AvFeedback>
                       </AvGroup>
                       </div>
-                      <div className="col-md-3">
+                      <div className="col-md-4">
                       <AvGroup>            
                         <Label for='hospitalid'>Hospital ID</Label>
                         <AvField name='hospitalid' id='hospitalid' disabled required value={this.state.hosid} onChange={(e) => this.setState({ hospital_id: e.target.value})}  />
                         <AvFeedback>Please enter the Hospital ID!</AvFeedback>
                       </AvGroup>
                       </div>
-                      <div className="col-md-3">
+                      <div className="col-md-4">
                       <AvGroup>            
                         <Label for='patientinitial'>Patient's Initial</Label>
                         <AvField name='patientinitial' id='patientinitial' required value={this.state.patient_initial} onChange={(e) => this.setState({ patient_initial: e.target.value})}  />
                         <AvFeedback>Please enter the Patient's Initial!</AvFeedback>
                       </AvGroup>
                       </div>
-                      <div className="col-md-3">
+                      <div className="col-md-4">
                       <AvGroup>
                         <Label for='dateofbirth'>Date of Birth</Label><br />
                         <DatePicker peekNextMonth showMonthDropdown showYearDropdown dropdownMode= "scroll" className="form-control date-picker-block w-100" dateFormat="dd-MM-yyyy" name="dobs" id="dobs" selected={this.state.startDate} onSelect={this.handleSelect} onChange={this.handleChange} />
@@ -490,14 +509,14 @@ default:
                         <AvFeedback>Please enter your DOB!</AvFeedback>
                       </AvGroup>
                       </div>
-                      <div className="col-md-3">
+                      <div className="col-md-4">
                       <AvGroup>
                         <Label for='ageofdiagnosis'>Age of Diagnosis</Label>
                         <AvInput name='ageofdiagnosis' id='ageofdiagnosis' required value={this.state.age_of_diagnosis} onChange={(e) => this.setState({ age_of_diagnosis: e.target.value})}  />
                         <AvFeedback>Please enter Age of Diagnosis!</AvFeedback>
                       </AvGroup>
                       </div>
-                      <div className="col-md-3">
+                      <div className="col-md-4">
                       <AvGroup>
                         <Label for='dateofdiagnosis'>Date of diagnosis of breast cancer</Label><br />
                         <DatePicker peekNextMonth showMonthDropdown showYearDropdown dropdownMode= "scroll" className="form-control date-picker-block w-100" dateFormat="dd-MM-yyyy" name="dtofdiag" id="dtofdiag" selected={this.state.startDateDOD} onSelect={this.handleSelect} onChange={this.handleChangeDOD} />
@@ -505,7 +524,8 @@ default:
                         <AvFeedback>Please enter your Date of diagnosis of breast cancer!</AvFeedback>
                       </AvGroup>
                       </div>
-                      <div className="col-md-3">
+                      <div className="col-md-12"></div>
+                      <div className="col-md-4">
                       <Label for='paraffin'>Paraffin blocks available</Label>
                       <AvRadioGroup name='paraffin' required value={this.state.praffin} onChange={(e) => this.setState({ praffin: e.target.value})} >
                         <div className="row">
@@ -522,13 +542,13 @@ default:
                           <div className="col-md-2"><AvRadio customInput label='Doctor' value='Doctor' onClick={ () => this.hideProComponent("hideProfession") } /></div>
                           <div className="col-md-2"><AvRadio customInput label='Nurse' value='Nurse' onClick={ () => this.hideProComponent("hideProfession") } /></div>
                           <div className="col-md-2"><AvRadio customInput label='Teacher' value='Teacher' onClick={ () => this.hideProComponent("hideProfession") } /></div>
-                          <div className="col-md-3"><AvRadio customInput label='Home Maker' value='Home Maker' onClick={ () => this.hideProComponent("hideProfession") } /></div>
+                          <div className="col-md-4"><AvRadio customInput label='Home Maker' value='Home Maker' onClick={ () => this.hideProComponent("hideProfession") } /></div>
                           <div className="col-md-2"><AvRadio customInput label='Other' value='Other' onClick={ () => this.showProComponent("showProfession") } /></div>                          
                         </div>
                       </AvRadioGroup>
                       </div>    
                       {showProfession && (
-                            <div className="col-md-3">
+                            <div className="col-md-5">
                             <AvGroup>
                               <Label for='otherprofession'>If Other Please mention Profession</Label>
                               <AvField name='otherprofession' id='otherprofession' value={this.state.other_profession} onChange={(e) => this.setState({ other_profession: e.target.value})}  />
@@ -539,7 +559,7 @@ default:
                       <div className="col-md-12">
                       <div className="row">
                         <div className="col-md-12"><Label for='ethnicity'>Ethnicity</Label></div>
-                        <div className="col-md-1">
+                        <div className="col-md-2">
                           <AvRadioGroup name='indian' required onChange={(e) => this.setState({ indian: e.target.value})} >
                             <div className="row">
                               <div className="col-md-12"><AvRadio customInput label='Indian' value='Indian' onClick={ () => this.showIndComponent("Indian") } /></div>                                                                             
@@ -634,21 +654,21 @@ default:
                             </div>
                           )}
                       <div className="col-md-12"></div>
-                      <div className="col-md-2">
+                      <div className="col-md-3">
                       <AvGroup>            
                         <Label for='typeofcancer'>Type of Cancer</Label>
                         <AvField name='typeofcancer' id='typeofcancer' required value={this.state.type_of_cancer} onChange={(e) => this.setState({ type_of_cancer: e.target.value})}  />
                         <AvFeedback>Please enter the Type of Cancer!</AvFeedback>
                       </AvGroup>
                       </div>
-                      <div className="col-md-2">
+                      <div className="col-md-3">
                       <AvGroup>            
                         <Label for='diagnosisofrelativeage'>Age at diagnosis of relative</Label>
                         <AvField name='diagnosisofrelativeage' id='diagnosisofrelativeage' required value={this.state.age_at_diagnosis_of_relative} onChange={(e) => this.setState({ age_at_diagnosis_of_relative: e.target.value})}  />
                         <AvFeedback>Please enter the Age at diagnosis of relative!</AvFeedback>
                       </AvGroup>
                       </div>
-                      <div className="col-md-4">
+                      <div className="col-md-6">
                       <Label for='presentsymptoms'>Presenting Symptom</Label>
                       <AvRadioGroup name='presentsymptoms' required value={this.state.presenting_symptom} onChange={(e) => this.setState({ presenting_symptom: e.target.value})} >
                         <div className="row">
@@ -657,7 +677,7 @@ default:
                         </div>
                       </AvRadioGroup>
                       </div>
-                      <div className="col-md-2">
+                      <div className="col-md-3">
                       <AvGroup>            
                         <Label for='monthlyfamilyincome'>Monthly Family Income</Label>
                         <AvInput type='select' name='monthlyfamilyincome' id='monthlyfamilyincome'required value={this.state.monthly_family_income} onChange={(e) => this.setState({ monthly_family_income: e.target.value})}>
@@ -668,31 +688,31 @@ default:
                         <AvFeedback>Please enter the Monthly Family Income!</AvFeedback>
                       </AvGroup>
                       </div>
-                      <div className="col-md-2">
+                      <div className="col-md-3">
                         <AvGroup>
                           <Label for='monthlyfamilyincomeamount'>Amount</Label>
                           <AvField name='monthlyfamilyincomeamount' id='monthlyfamilyincomeamount' required value={this.state.amount} onChange={(e) => this.setState({ amount: e.target.value})}  />
                           <AvFeedback>Please enter the Amount!</AvFeedback>
                         </AvGroup>
                       </div>
-                      <div className="col-md-9">
+                      <div className="col-md-8">
                         <Label for='comorbidities'>Co-morbidities</Label>
                         <AvRadioGroup name='comorbidities' required value={this.state.co_morbidities} onChange={(e) => this.setState({ co_morbidities: e.target.value})} >
                           <div className="row">
-                            <div className="col-md-2"><AvRadio customInput label='Hypertension' value='Hypertension' onClick={ () => this.hideOtherCancerComponent("hideMorbidities") } /></div>
-                            <div className="col-md-2"><AvRadio customInput label='DM' value='DM' onClick={ () => this.hideMorbiditiesComponent("hideMorbidities") } /></div>
-                            <div className="col-md-2"><AvRadio customInput label='IHD and CVA' value='IHD and CVA' onClick={ () => this.hideMorbiditiesComponent("hideMorbidities") } /></div>
-                            <div className="col-md-2"><AvRadio customInput label='Viral Illness – HIV' value='Viral Illness – HIV' onClick={ () => this.hideMorbiditiesComponent("hideMorbidities") } /></div>
-                            <div className="col-md-2"><AvRadio customInput label='Hepatitis B' value='Hepatitis B' onClick={ () => this.hideMorbiditiesComponent("hideMorbidities") } /></div>
-                            <div className="col-md-2"><AvRadio customInput label='Hepatitis C' value='Hepatitis C' onClick={ () => this.hideMorbiditiesComponent("hideMorbidities") } /></div>
-                            <div className="col-md-2"><AvRadio customInput label='TB' value='TB' onClick={ () => this.hideMorbiditiesComponent("hideMorbidities") } /></div>
+                            <div className="col-md-3"><AvRadio customInput label='Hypertension' value='Hypertension' onClick={ () => this.hideOtherCancerComponent("hideMorbidities") } /></div>
+                            <div className="col-md-3"><AvRadio customInput label='DM' value='DM' onClick={ () => this.hideMorbiditiesComponent("hideMorbidities") } /></div>
+                            <div className="col-md-3"><AvRadio customInput label='IHD and CVA' value='IHD and CVA' onClick={ () => this.hideMorbiditiesComponent("hideMorbidities") } /></div>
+                            <div className="col-md-4"><AvRadio customInput label='Viral Illness – HIV' value='Viral Illness – HIV' onClick={ () => this.hideMorbiditiesComponent("hideMorbidities") } /></div>
+                            <div className="col-md-3"><AvRadio customInput label='Hepatitis B' value='Hepatitis B' onClick={ () => this.hideMorbiditiesComponent("hideMorbidities") } /></div>
+                            <div className="col-md-3"><AvRadio customInput label='Hepatitis C' value='Hepatitis C' onClick={ () => this.hideMorbiditiesComponent("hideMorbidities") } /></div>
+                            <div className="col-md-1"><AvRadio customInput label='TB' value='TB' onClick={ () => this.hideMorbiditiesComponent("hideMorbidities") } /></div>
                             <div className="col-md-2"><AvRadio customInput label='PCOD' value='PCOD' onClick={ () => this.hideMorbiditiesComponent("hideMorbidities") } /></div>
                             <div className="col-md-2"><AvRadio customInput label='Other' value='Other' onClick={ () => this.showMorbiditiesComponent("showMorbidities") } /></div>                          
                           </div>
                         </AvRadioGroup>
                         </div>
                         {showMorbidities && (
-                            <div className="col-md-3">
+                            <div className="col-md-4">
                             <AvGroup>
                               <Label for='othermorbidities'>If Other Please mention Morbidities</Label>
                               <AvField name='othermorbidities' id='othermorbidities' value={this.state.other_co_morbodities} onChange={(e) => this.setState({ other_co_morbodities: e.target.value})}  />
@@ -730,7 +750,7 @@ default:
                         <div className="col-md-4">
                           <AvGroup>
                             <Label for='tobacconoofyears'>Number of Years of Addiction</Label>
-                            <AvField name='tobacconoofyears' id='tobacconoofyears' value={this.state.tobacco_no_of_years} onChange={(e) => this.setState({ tobacco_no_of_years: e.target.value})}  />
+                            <AvField name='tobacconoofyears' id='tobacconoofyears' value={this.state.tobacco_no_of_years} onChange={(e) => this.setState({ tobacco_no_of_years: e.target.value})} required  />
                             <AvFeedback>Please enter the Number of Years of Addiction!</AvFeedback>
                           </AvGroup>
                         </div>
